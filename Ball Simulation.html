@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Simulation - ball movement</title>
+</head>
+
+<body>
+    <p>Refresh this page to see your code changes in action</p>
+    <!-- YOUR CODE STARTS HERE -->
+
+    //Set global variable that would contain the position, velocity and the html element "ball"
+var positionX = 0;
+var positionY = 0;
+var velocity = 100;
+var reverse = false;
+var ball = document.getElementById("ball");
+
+//write a function that can change the position of the html element "ball"
+function moveBall() {
+  // two x-axis coordinates
+  var Xmin = 0;
+  var Xmax = 300;
+
+  // two y-axis coordinates
+  var Ymin = 0;
+  var Ymax = 300;
+
+  if (reverse) {
+    positionX = positionX - velocity;
+    positionY = positionY - velocity;
+    ball.style.left = positionX + "px";
+    ball.style.top = positionY + "px";
+  } else {
+    positionX = positionX + velocity;
+    positionY = positionY + velocity;
+    ball.style.left = positionX + "px";
+    ball.style.top = positionY + "px";
+  }
+
+  if (
+    positionX > Xmax ||
+    positionX === Xmin ||
+    positionY > Ymax ||
+    positionY === Ymin
+  ) {
+    reverse = !reverse;
+  }
+}
+
+setInterval(moveBall, 100);
+
+
+    <div id="ball" style="z-index: 5;
+     position: absolute;
+     left: 0px;
+     top: 200px;
+     width: 100px;
+     height: 100px;
+     border-radius: 50%;
+     background: black;">
+    </div>
+
+    <!-- YOUR CODE ENDS HERE -->
+</body>
+<!-- DO NOT EDIT PAST THIS POINT -->
+<script src="./ball.js"></script>
+
+</html>
